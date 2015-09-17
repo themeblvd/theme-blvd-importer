@@ -19,21 +19,21 @@ class Theme_Blvd_Import {
 	/**
 	 * A single instance of this class.
 	 *
-	 * @since 2.5.0
+	 * @since 1.0.0
 	 */
 	private static $instance = null;
 
 	/**
 	 * Theme Demo number to import.
 	 *
-	 * @since 2.5.0
+	 * @since 1.0.0
 	 */
 	private $num = '0';
 
 	/**
 	 * Directory paths to XML files used for import.
 	 *
-	 * @since 2.5.0
+	 * @since 1.0.0
 	 */
 	private $files = array();
 
@@ -41,14 +41,14 @@ class Theme_Blvd_Import {
 	 * Stored meta data for all nav menu items, so we
 	 * can process for it our main menu afterwards.
 	 *
-	 * @since 2.5.0
+	 * @since 1.0.0
 	 */
 	private $nav_meta = array();
 
 	/**
 	 * If at any point there's an error, we'll store it here.
 	 *
-	 * @since 2.5.0
+	 * @since 1.0.0
 	 */
 	private $error = '';
 
@@ -59,7 +59,7 @@ class Theme_Blvd_Import {
 	/**
      * Creates or returns an instance of this class.
      *
-     * @since 2.5.0
+     * @since 1.0.0
      *
      * @return Theme_Blvd_Import A single instance of this class.
      */
@@ -75,7 +75,7 @@ class Theme_Blvd_Import {
 	/**
 	 * Constructor. Hook everything in.
 	 *
-	 * @since 2.5.0
+	 * @since 1.0.0
 	 */
 	private function __construct() {
 
@@ -103,7 +103,7 @@ class Theme_Blvd_Import {
 	/**
 	 * Set XML file locations
 	 *
-	 * @since 2.5.0
+	 * @since 1.0.0
 	 */
 	public function set_files() {
 
@@ -163,7 +163,7 @@ class Theme_Blvd_Import {
 	 * the importer. This allows the user to select if they
 	 * want to import our demo data with their XML file.
 	 *
-	 * @since 2.5.0
+	 * @since 1.0.0
 	 */
 	public function add_scripts( $hook ) {
 
@@ -205,7 +205,7 @@ class Theme_Blvd_Import {
 	 * Store meta data in object for nav menu item
 	 * so we can save it at the end.
 	 *
-	 * @since 2.5.0
+	 * @since 1.0.0
 	 */
 	function store_nav_meta( $post ) {
 
@@ -219,7 +219,7 @@ class Theme_Blvd_Import {
 	/**
 	 * Run importer.
 	 *
-	 * @since 2.5.0
+	 * @since 1.0.0
 	 */
 	public function import() {
 
@@ -281,7 +281,7 @@ class Theme_Blvd_Import {
 	/**
 	 * Import each infividual XML file.
 	 *
-	 * @since 2.5.0
+	 * @since 1.0.0
 	 */
 	public function do_import( $file ) {
 
@@ -449,7 +449,7 @@ class Theme_Blvd_Import {
 	/**
 	 * Check if this is step 1 of the WordPress import process.
 	 *
-	 * @since 2.5.0
+	 * @since 1.0.0
 	 */
 	public function doing_import() {
 
@@ -488,7 +488,7 @@ class Theme_Blvd_Import {
 	/**
 	 * Check if XML file exists
 	 *
-	 * @since 2.5.0
+	 * @since 1.0.0
 	 */
 	public function has_file( $file ) {
 
@@ -502,7 +502,7 @@ class Theme_Blvd_Import {
 	/**
 	 * Return import XML file
 	 *
-	 * @since 2.5.0
+	 * @since 1.0.0
 	 */
 	public function get_file( $file ) {
 

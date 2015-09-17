@@ -16,7 +16,7 @@ class Theme_Blvd_Import_Options {
 	/**
 	 * Constructor.
 	 *
-	 * @since 2.5.0
+	 * @since 1.0.0
 	 *
 	 * @param string $id A unique ID for this exporter
 	 */
@@ -42,7 +42,7 @@ class Theme_Blvd_Import_Options {
 	/**
 	 * Add the hidden admin page to WordPress.
 	 *
-	 * @since 2.5.0
+	 * @since 1.0.0
 	 */
 	public function add_page() {
 
@@ -56,7 +56,7 @@ class Theme_Blvd_Import_Options {
 	/**
 	 * Display the hidden admin page.
 	 *
-	 * @since 2.5.0
+	 * @since 1.0.0
 	 */
 	public function admin_page() {
 
@@ -91,7 +91,7 @@ class Theme_Blvd_Import_Options {
 	/**
 	 * Process the uploaded file and import the data.
 	 *
-	 * @since 2.5.0
+	 * @since 1.0.0
 	 */
 	public function import() {
 
@@ -168,7 +168,7 @@ class Theme_Blvd_Import_Options {
 	/**
 	 * Get the URL of our hidden admin page.
 	 *
-	 * @since 2.5.0
+	 * @since 1.0.0
 	 */
 	public function get_url() {
 		return esc_url( add_query_arg( array('page' => $this->id.'-import-options'), admin_url('admin.php') ) );
@@ -177,7 +177,7 @@ class Theme_Blvd_Import_Options {
 	/**
 	 * Success notice.
 	 *
-	 * @since 2.5.0
+	 * @since 1.0.0
 	 */
 	public function success() {
 		if ( ! empty( $_GET['settings-updated'] ) && $_GET['settings-updated'] == 'themeblvd_import_success' ) {
@@ -188,7 +188,7 @@ class Theme_Blvd_Import_Options {
 	/**
 	 * Fail notice.
 	 *
-	 * @since 2.5.0
+	 * @since 1.0.0
 	 */
 	public function fail() {
 		?>

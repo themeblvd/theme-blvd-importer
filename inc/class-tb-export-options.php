@@ -16,7 +16,7 @@ class Theme_Blvd_Export_Options extends Theme_Blvd_Export {
 	/**
 	 * Constructor.
 	 *
-	 * @since 2.5.0
+	 * @since 1.0.0
 	 *
 	 * @param string $id A unique ID for this exporter
 	 */
@@ -27,7 +27,7 @@ class Theme_Blvd_Export_Options extends Theme_Blvd_Export {
 	/**
 	 * Output content to be exported.
 	 *
-	 * @since 2.5.0
+	 * @since 1.0.0
 	 */
 	public function export() {
 
@@ -43,7 +43,7 @@ class Theme_Blvd_Export_Options extends Theme_Blvd_Export {
 	/**
 	 * If settings are empty, cancel the export.
 	 *
-	 * @since 2.5.0
+	 * @since 1.0.0
 	 */
 	protected function cancel() {
 		if ( ! get_option( $this->id ) ) {

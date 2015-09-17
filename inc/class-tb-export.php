@@ -28,7 +28,7 @@ abstract class Theme_Blvd_Export {
 	/**
 	 * The unique ID for this exporter.
 	 *
-	 * @since 2.5.0
+	 * @since 1.0.0
 	 * @var string
 	 */
 	public $id = '';
@@ -36,7 +36,7 @@ abstract class Theme_Blvd_Export {
 	/**
 	 * Any arguments for object.
 	 *
-	 * @since 2.5.0
+	 * @since 1.0.0
 	 * @var array
 	 */
 	protected $args = array();
@@ -44,7 +44,7 @@ abstract class Theme_Blvd_Export {
 	/**
 	 * Whether to cancel the export.
 	 *
-	 * @since 2.5.0
+	 * @since 1.0.0
 	 * @var bool
 	 */
 	protected $do_cancel = false;
@@ -52,7 +52,7 @@ abstract class Theme_Blvd_Export {
 	/**
 	 * Constructor.
 	 *
-	 * @since 2.5.0
+	 * @since 1.0.0
 	 *
 	 * @param string $id A unique ID for this exporter
 	 */
@@ -75,7 +75,7 @@ abstract class Theme_Blvd_Export {
 	/**
 	 * Initiate the export process.
 	 *
-	 * @since 2.5.0
+	 * @since 1.0.0
 	 */
 	public function init() {
 
@@ -109,7 +109,7 @@ abstract class Theme_Blvd_Export {
 	/**
 	 * Set headers.
 	 *
-	 * @since 2.5.0
+	 * @since 1.0.0
 	 */
 	protected function headers() {
 		header( 'Content-Description: File Transfer' );
@@ -121,7 +121,7 @@ abstract class Theme_Blvd_Export {
 	 * Optional cancel; extend this from child, to check
 	 * if there would be a reason to break the export.
 	 *
-	 * @since 2.5.0
+	 * @since 1.0.0
 	 */
 	protected function cancel() {
 		// $this->do_cancel = true;
@@ -130,7 +130,7 @@ abstract class Theme_Blvd_Export {
 	/**
 	 * Show confirmation that export was cancelled.
 	 *
-	 * @since 2.5.0
+	 * @since 1.0.0
 	 */
 	public function cancelled() {
 		if ( ! empty( $_GET['settings-updated'] ) && $_GET['settings-updated'] == 'themeblvd_export_fail' ) {
