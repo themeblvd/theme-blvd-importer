@@ -92,7 +92,7 @@ abstract class Theme_Blvd_Export {
 		// Allow the child class to break the export.
 		$this->cancel();
 		if ( $this->do_cancel ) {
-			wp_redirect( $this->args['base_url'].'&settings-updated=themeblvd_export_fail' ); // Use "settings-updated" so WP will override if user saves options form on next page load
+			wp_redirect( add_query_arg( array('settings-updated' => 'themeblvd_export_fail'), $this->args['base_url'] ) ); // Use "settings-updated" so WP will override if user saves options form on next page load
 			exit;
 		}
 
