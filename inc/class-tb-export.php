@@ -17,7 +17,6 @@
  * @copyright	Copyright (c) Jason Bobich
  * @link		http://jasonbobich.com
  * @link		http://themeblvd.com
- * @package 	Theme Blvd WordPress Framework
  */
 abstract class Theme_Blvd_Export {
 
@@ -65,7 +64,7 @@ abstract class Theme_Blvd_Export {
 			'filename' 	=> $this->id.'-options-'.date('Y-m-d').'.xml',
 			'filetype'	=> 'xml',
 			'base_url'	=> admin_url(),
-			'cancel'	=> __('The export could not be completed.', 'themeblvd')
+			'cancel'	=> __('The export could not be completed.', 'theme-blvd-importer')
 		);
 		$this->args = wp_parse_args( $args, $defaults );
 

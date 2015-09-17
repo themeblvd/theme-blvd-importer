@@ -9,7 +9,6 @@
  * @copyright	Copyright (c) Jason Bobich
  * @link		http://jasonbobich.com
  * @link		http://themeblvd.com
- * @package 	Theme Blvd WordPress Framework
  */
 class Theme_Blvd_Import {
 
@@ -176,13 +175,13 @@ class Theme_Blvd_Import {
 			$name = $theme->get('Name');
 
 			wp_enqueue_script( 'jquery' );
-			wp_enqueue_script( 'themeblvd-import', esc_url( TB_FRAMEWORK_URI . '/admin/assets/js/import.js' ), array('jquery'), TB_FRAMEWORK_VERSION );
+			wp_enqueue_script( 'themeblvd-import', esc_url( TB_IMPORTER_PLUGIN_URI . '/assets/js/import.js' ), array('jquery'), TB_IMPORTER_PLUGIN_VERSION );
 
 			$locals = apply_filters('themeblvd_import_locals', array(
-				'header' 			=> sprintf(__("Import %s Demo #%s", 'themeblvd'), $name, $this->num),
-				'theme_settings'	=> sprintf(__("Import demo's theme settings", 'themeblvd'), $name),
-				'site_settings'		=> sprintf(__("Import demo's important site settings", 'themeblvd'), $name),
-				'site_widgets'		=> sprintf(__("Import demo's widgets", 'themeblvd'), $name),
+				'header' 			=> sprintf(__("Import %s Demo #%s", 'theme-blvd-importer'), $name, $this->num),
+				'theme_settings'	=> sprintf(__("Import demo's theme settings", 'theme-blvd-importer'), $name),
+				'site_settings'		=> sprintf(__("Import demo's important site settings", 'theme-blvd-importer'), $name),
+				'site_widgets'		=> sprintf(__("Import demo's widgets", 'theme-blvd-importer'), $name),
 				'file_name'			=> $_FILES['import']['name']
 			));
 
@@ -228,7 +227,7 @@ class Theme_Blvd_Import {
 
 		if ( ! empty( $_POST['themeblvd_import_theme_settings'] ) || ! empty( $_POST['themeblvd_import_site_settings'] ) || ! empty( $_POST['themeblvd_import_site_widgets'] ) ) {
 			if ( ! function_exists( 'simplexml_load_file' ) ) {
-				$this->error = __('Simple XML not found in your server\'s PHP configuration.', 'themeblvd');
+				$this->error = __('Simple XML not found in your server\'s PHP configuration.', 'theme-blvd-importer');
 			}
 		}
 
@@ -240,7 +239,7 @@ class Theme_Blvd_Import {
 				$this->do_import('site-settings');
 				$did_something = true;
 			} else {
-				$this->error = __('One or more of the required XML files could not be found.', 'themeblvd');
+				$this->error = __('One or more of the required XML files could not be found.', 'theme-blvd-importer');
 			}
 		}
 
@@ -250,7 +249,7 @@ class Theme_Blvd_Import {
 				$this->do_import('site-widgets');
 				$did_something = true;
 			} else {
-				$this->error = __('One or more of the required XML files could not be found.', 'themeblvd');
+				$this->error = __('One or more of the required XML files could not be found.', 'theme-blvd-importer');
 			}
 		}
 
@@ -260,7 +259,7 @@ class Theme_Blvd_Import {
 				$this->do_import('theme-settings');
 				$did_something = true;
 			} else {
-				$this->error = __('One or more of the required XML files could not be found.', 'themeblvd');
+				$this->error = __('One or more of the required XML files could not be found.', 'theme-blvd-importer');
 			}
 		}
 
@@ -270,9 +269,9 @@ class Theme_Blvd_Import {
 			$theme = wp_get_theme();
 
 			if ( $this->error ) {
-				echo '<p>'.sprintf(esc_html__('There was an error with setting up your site like the %s demo. %s', 'themeblvd'), $theme->get('Name'), esc_html($this->error)).'</p>';
+				echo '<p>'.sprintf(esc_html__('There was an error with setting up your site like the %s demo. %s', 'theme-blvd-importer'), $theme->get('Name'), esc_html($this->error)).'</p>';
 			} else {
-				echo '<p>'.sprintf(esc_html__('%s demo data has been setup successfully.', 'themeblvd'), $theme->get('Name')).'</p>';
+				echo '<p>'.sprintf(esc_html__('%s demo data has been setup successfully.', 'theme-blvd-importer'), $theme->get('Name')).'</p>';
 			}
 		}
 
@@ -292,7 +291,7 @@ class Theme_Blvd_Import {
 		$import = simplexml_load_file( $this->get_file($file) );
 
 		if ( ! $import ) {
-			$this->error = __('One or more of the required XML files could not be read.', 'themeblvd');
+			$this->error = __('One or more of the required XML files could not be read.', 'theme-blvd-importer');
 			return;
 		}
 

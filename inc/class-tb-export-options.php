@@ -4,13 +4,12 @@
  * basic structure for exporting.
  *
  * See Theme_Blvd_Export class documentation at
- * /framework/tools/tb-class-export.php
+ * /inc/tb-class-export.php
  *
  * @author		Jason Bobich
  * @copyright	Copyright (c) Jason Bobich
  * @link		http://jasonbobich.com
  * @link		http://themeblvd.com
- * @package 	Theme Blvd WordPress Framework
  */
 class Theme_Blvd_Export_Options extends Theme_Blvd_Export {
 
@@ -37,7 +36,7 @@ class Theme_Blvd_Export_Options extends Theme_Blvd_Export {
 
 		// Output the XML file content
 		if ( $settings ) {
-			include_once( TB_FRAMEWORK_DIRECTORY . '/admin/options/options-export.php' );
+			include_once( TB_IMPORTER_PLUGIN_DIR . '/inc/options-export.php' );
 		}
 	}
 

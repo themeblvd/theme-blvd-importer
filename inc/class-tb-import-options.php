@@ -6,7 +6,6 @@
  * @copyright	Copyright (c) Jason Bobich
  * @link		http://jasonbobich.com
  * @link		http://themeblvd.com
- * @package 	Theme Blvd WordPress Framework
  */
 class Theme_Blvd_Import_Options {
 
@@ -50,28 +49,7 @@ class Theme_Blvd_Import_Options {
 		global $submenu;
 
 		// Add admin page
-		add_theme_page( null, __('Theme Options Import', 'themeblvd'), themeblvd_admin_module_cap('options'), $this->id.'-import-options', array( $this, 'admin_page' ) );
-
-		// Hide the admin page link -- why?
-		//
-		// This admin page is linked to from an "Import" button
-		// on the theme options page, and so there's no need to
-		// clutter up main WP admin nav.
-		//
-		// And in trying to keep everything compliant with theme
-		// check, we must use the add_theme_page() function, and
-		// thus there's no way around our admin page link getting
-		// added at Appearance of WP admin menu. So, we can hide
-		// it by adding CSS class "hidden".
-
-		if ( ! empty($submenu['themes.php']) ) {
-			foreach ( $submenu['themes.php'] as $key => $val ) {
-				if ( isset($val[2]) && $val[2] == $this->id.'-import-options' ) {
-					$submenu['themes.php'][$key][4] = 'hidden';
-					break;
-				}
-			}
-		}
+		add_submenu_page( null, null, __('Theme Options Import', 'theme-blvd-importer'), themeblvd_admin_module_cap('options'), $this->id.'-import-options', array( $this, 'admin_page' ) );
 
 	}
 
@@ -82,26 +60,29 @@ class Theme_Blvd_Import_Options {
 	 */
 	public function admin_page() {
 
-		$title = __('Import Options', 'themeblvd');
+		$title = __('Import Options', 'theme-blvd-importer');
 
 		if ( get_template() == $this->id ) {
 			$theme = wp_get_theme();
-			$title = sprintf( __('Import %s Options', 'themeblvd'), $theme->get('Name') );
+			$title = sprintf( __('Import %s Options', 'theme-blvd-importer'), $theme->get('Name') );
 		}
 
 		?>
 		<h2><?php echo esc_html($title); ?></h2>
-		<p><?php esc_html_e('Upload an XML file previously exported from your options page.', 'themeblvd'); ?></p>
-		<p><strong><?php esc_html_e('Warning: This will override any currently saved options.', 'themeblvd'); ?></strong></p>
+
+		<p><?php esc_html_e('Upload an XML file previously exported from your options page.', 'theme-blvd-importer'); ?></p>
+
+		<p><strong><?php esc_html_e('Warning: This will override any currently saved options.', 'theme-blvd-importer'); ?></strong></p>
+
 		<form enctype="multipart/form-data" id="import-upload-form" method="post" class="wp-upload-form" action="admin.php?page=<?php echo $this->id; ?>-import-options&amp;themeblvd_import=true">
 			<p>
-				<label for="upload"><?php esc_html_e('Choose a file from your computer:', 'themeblvd'); ?></label><br />
+				<label for="upload"><?php esc_html_e('Choose a file from your computer:', 'theme-blvd-importer'); ?></label><br />
 				<input type="file" id="upload" name="import" size="25" />
 				<input type="hidden" name="_wpnonce" value="<?php echo wp_create_nonce( 'themeblvd_import_'.$this->id ); ?>" />
 				<input type="hidden" name="max_file_size" value="33554432" />
 			</p>
 			<p class="submit">
-				<input type="submit" name="submit" id="submit" class="button" value="<?php esc_attr_e('Upload file and import', 'themeblvd'); ?>" disabled="" />
+				<input type="submit" name="submit" id="submit" class="button" value="<?php esc_attr_e('Upload file and import', 'theme-blvd-importer'); ?>" disabled="" />
 			</p>
 		</form>
 		<?php
@@ -130,7 +111,7 @@ class Theme_Blvd_Import_Options {
 
 			// Needs to be an XML file
 			if ( $_FILES['import']['type'] != 'text/xml' ) {
-				$this->error = __('Error. You must upload an XML file.', 'themeblvd');
+				$this->error = __('Error. You must upload an XML file.', 'theme-blvd-importer');
 				add_action( 'admin_notices', array( $this, 'fail' ) );
 				return;
 			}
@@ -145,7 +126,7 @@ class Theme_Blvd_Import_Options {
 		}
 
 		if ( ! $import ) {
-			$this->error = __('Error. The XML file could not be read.', 'themeblvd');
+			$this->error = __('Error. The XML file could not be read.', 'theme-blvd-importer');
 			add_action( 'admin_notices', array( $this, 'fail' ) );
 			return;
 		}
@@ -153,14 +134,14 @@ class Theme_Blvd_Import_Options {
 		$atts = $import->attributes();
 
 		if ( $atts->themeblvd != 'options' ) {
-			$this->error = __('Error. The XML file is not formatted properly for importing Theme Blvd options.', 'themeblvd');
+			$this->error = __('Error. The XML file is not formatted properly for importing Theme Blvd options.', 'theme-blvd-importer');
 			add_action( 'admin_notices', array( $this, 'fail' ) );
 			return;
 		}
 
 		if ( $atts->template != get_template() ) {
 			$theme = wp_get_theme( get_template() );
-			$this->error = sprintf( __('Error. The XML file was not exported from the current theme, %s.', 'themeblvd'), $theme->get('Name') );
+			$this->error = sprintf( __('Error. The XML file was not exported from the current theme, %s.', 'theme-blvd-importer'), $theme->get('Name') );
 			add_action( 'admin_notices', array( $this, 'fail' ) );
 			return;
 		}
@@ -190,7 +171,7 @@ class Theme_Blvd_Import_Options {
 	 * @since 2.5.0
 	 */
 	public function get_url() {
-		return esc_url( admin_url('admin.php?page='.$this->id.'-import-options') );
+		return esc_url( add_query_arg( array('page' => $this->id.'-import-options'), admin_url('admin.php') ) );
 	}
 
 	/**
@@ -200,7 +181,7 @@ class Theme_Blvd_Import_Options {
 	 */
 	public function success() {
 		if ( ! empty( $_GET['settings-updated'] ) && $_GET['settings-updated'] == 'themeblvd_import_success' ) {
-			add_settings_error( $this->id, 'export-success', __('Options imported successfully.', 'themeblvd'), 'themeblvd-updated updated' );
+			add_settings_error( $this->id, 'export-success', __('Options imported successfully.', 'theme-blvd-importer'), 'themeblvd-updated updated' );
 		}
 	}
 
@@ -212,7 +193,7 @@ class Theme_Blvd_Import_Options {
 	public function fail() {
 		?>
 		<div class="themeblvd-updated error settings-error" style="margin-left: 0;">
-			<p><strong><?php echo $this->error; ?></strong></p>
+			<p><strong><?php echo esc_html($this->error); ?></strong></p>
 		</div>
 		<?php
 	}

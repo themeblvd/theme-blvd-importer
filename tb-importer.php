@@ -50,19 +50,15 @@ function themeblvd_importer_init() {
 		return;
 	}
 
-	// Include general items
-	include_once( TB_FRAMEWORK_DIRECTORY . '/admin/tools/class-tb-export.php' );
-	include_once( TB_FRAMEWORK_DIRECTORY . '/admin/tools/class-tb-import.php' );
-	include_once( TB_FRAMEWORK_DIRECTORY . '/admin/options/class-tb-export-options.php' );
-	include_once( TB_FRAMEWORK_DIRECTORY . '/admin/options/class-tb-import-options.php' );
+	// Include files
+	include_once( TB_IMPORTER_PLUGIN_DIR . '/inc/class-tb-export.php' );
+	include_once( TB_IMPORTER_PLUGIN_DIR . '/inc/class-tb-import.php' );
+	include_once( TB_IMPORTER_PLUGIN_DIR . '/inc/class-tb-export-options.php' );
+	include_once( TB_IMPORTER_PLUGIN_DIR . '/inc/class-tb-import-options.php' );
 
-	// Error handling
-	// ... requires 2.5.2
-
-	if ( is_admin() ){
-
-		// ...
-
+	// Run the theme demo importer.
+	if ( defined( 'WP_LOAD_IMPORTERS' ) ) {
+		$importer = Theme_Blvd_Import::get_instance();
 	}
 
 }
