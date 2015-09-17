@@ -12,7 +12,7 @@ A free plugin that integrates some helpful import/export functionality into Them
 
 When using a Theme Blvd theme, this plugin adds some helpful import and export functionality.
 
-1. **Live Demo Import:** The default WordPress importer is extended to fully setup a copy of your theme's live demos.  After importing all of the standard data like posts, pages, attachments and menus, our plugin then continues to import theme options, widgets, menu assignments, and important site settings. [Watch Video Tutorial](https://vimeo.com/123872759)
+1. **Live Demo Import:** The default WordPress importer is extended to fully setup a copy of your theme's live demo(s).  After importing all of the standard data like posts, pages, attachments and menus, our plugin then continues to import theme options, widgets, menu assignments, and important site settings. [Watch Video Tutorial](https://vimeo.com/123872759)
 2. **Theme Options:** Import and export an XML copy of your settings.
 3. **Layout Builder:** With our [Layout Builder plugin](https://wordpress.org/plugins/theme-blvd-layout-builder/), import and export XML copies of your custom templates.
 
