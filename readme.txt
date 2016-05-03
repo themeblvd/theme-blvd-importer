@@ -2,7 +2,7 @@
 Author URI: http://www.themeblvd.com
 Contributors: themeblvd
 Tags: import, export, demo, data
-Stable Tag: 1.0.0
+Stable Tag: 1.0.1
 
 A free plugin that integrates some helpful import/export functionality into Theme Blvd themes.
 
@@ -29,6 +29,8 @@ This plugin currently works with the following themes only.
 2. Activate the plugin through the 'Plugins' menu in WordPress
 
 == Changelog ==
+
+= 1.0.1 - 05/03/16 =
 
 = 1.0.0 - 09/16/15 =
 
