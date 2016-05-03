@@ -381,11 +381,13 @@ class Theme_Blvd_Import {
 				// which we've saved in our current object.
 				$items = wp_get_nav_menu_items( $assign['primary'] );
 
-				foreach ( $items as $item ) {
-					if ( ! empty($this->nav_meta[$item->menu_order]) ) {
-						foreach ( $this->nav_meta[$item->menu_order] as $meta ) {
-							if ( in_array( $meta['key'], array('_tb_mega_menu', '_tb_mega_menu_hide_headers', '_tb_bold', '_tb_deactivate_link', '_tb_placeholder') ) ) {
-								update_post_meta( $item->ID, $meta['key'], $meta['value'] );
+				if ( $items ) {
+					foreach ( $items as $item ) {
+						if ( ! empty($this->nav_meta[$item->menu_order]) ) {
+							foreach ( $this->nav_meta[$item->menu_order] as $meta ) {
+								if ( in_array( $meta['key'], array('_tb_mega_menu', '_tb_mega_menu_hide_headers', '_tb_bold', '_tb_deactivate_link', '_tb_placeholder') ) ) {
+									update_post_meta( $item->ID, $meta['key'], $meta['value'] );
+								}
 							}
 						}
 					}
