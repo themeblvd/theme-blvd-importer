@@ -124,9 +124,10 @@ class Theme_Blvd_Import {
 			'site-widgets'		=> null
 		);
 
-		$num = substr($file, strlen(get_template().'-demo-'), 1);
+		$num = substr( $file, strlen(get_template().'-demo-') );
+		$num = str_replace('.xml', '', $num);
 
-		if ( intval($num) ) {
+		if ( $num ) {
 
 			$this->num = $num;
 
@@ -177,13 +178,19 @@ class Theme_Blvd_Import {
 			wp_enqueue_script( 'jquery' );
 			wp_enqueue_script( 'themeblvd-import', esc_url( TB_IMPORTER_PLUGIN_URI . '/assets/js/import.js' ), array('jquery'), TB_IMPORTER_PLUGIN_VERSION );
 
-			$locals = apply_filters('themeblvd_import_locals', array(
+			$locals = array(
 				'header' 			=> sprintf(__("Import %s Demo #%s", 'theme-blvd-importer'), $name, $this->num),
 				'theme_settings'	=> sprintf(__("Import demo's theme settings", 'theme-blvd-importer'), $name),
 				'site_settings'		=> sprintf(__("Import demo's important site settings", 'theme-blvd-importer'), $name),
 				'site_widgets'		=> sprintf(__("Import demo's widgets", 'theme-blvd-importer'), $name),
 				'file_name'			=> $_FILES['import']['name']
-			));
+			);
+
+			if ( ! intval($this->num) ) {
+				$locals['header'] = sprintf( __("Import %s %s Demo", 'theme-blvd-importer'), $name, ucfirst($this->num) );
+			}
+
+			$locals = apply_filters('themeblvd_import_locals', $locals);
 
 			if ( ! $this->has_file('theme-settings') ) {
 				$locals['theme_settings'] = '';

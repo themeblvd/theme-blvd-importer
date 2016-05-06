@@ -32,6 +32,8 @@ This plugin currently works with the following themes only.
 
 = 1.0.2 - 05/05/16 =
 
+* Fixed: Demos not importing correctly numbered 10+ or with non-numerical strings.
+
 = 1.0.1 - 05/03/16 =
 
 * Fixed: PHP warning when importing a theme demo that happens to not have all menu locations being used.
