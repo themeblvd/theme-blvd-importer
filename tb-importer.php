@@ -2,7 +2,7 @@
 /*
 Plugin Name: Theme Blvd Importer
 Description: A free plugin that integrates some helpful import/export functionality into Theme Blvd themes.
-Version: 1.0.1
+Version: 1.0.2
 Author: Theme Blvd
 Author URI: http://themeblvd.com
 License: GPL2
@@ -25,7 +25,7 @@ License: GPL2
 
 */
 
-define( 'TB_IMPORTER_PLUGIN_VERSION', '1.0.1' );
+define( 'TB_IMPORTER_PLUGIN_VERSION', '1.0.2' );
 define( 'TB_IMPORTER_PLUGIN_DIR', dirname( __FILE__ ) );
 define( 'TB_IMPORTER_PLUGIN_URI', plugins_url( '' , __FILE__ ) );
 
