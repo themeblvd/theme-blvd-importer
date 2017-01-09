@@ -216,8 +216,10 @@ class Theme_Blvd_Import {
 	 */
 	function store_nav_meta( $post ) {
 
-		if ( ! empty($post['postmeta']) && ! empty($post['post_type']) && $post['post_type'] == 'nav_menu_item' ) {
-			$this->nav_meta[$post['menu_order']] = $post['postmeta'];
+		if ( ! empty( $post['postmeta'] ) && ! empty( $post['post_type'] ) && $post['post_type'] === 'nav_menu_item' ) {
+
+			$this->nav_meta[ $post['post_title'] ] = $post['postmeta'];
+
 		}
 
 		return $post; // pass back through, untouched
@@ -386,14 +388,18 @@ class Theme_Blvd_Import {
 
 				// Save meta for menu items in the main menu menu,
 				// which we've saved in our current object.
-				$items = wp_get_nav_menu_items( $assign['primary'] );
+				if ( $items = wp_get_nav_menu_items( $assign['primary'] ) ) {
 
-				if ( $items ) {
 					foreach ( $items as $item ) {
-						if ( ! empty($this->nav_meta[$item->menu_order]) ) {
-							foreach ( $this->nav_meta[$item->menu_order] as $meta ) {
+
+						if ( ! empty( $this->nav_meta[$item->post_title] ) ) {
+
+							foreach ( $this->nav_meta[$item->post_title] as $meta ) {
+
 								if ( in_array( $meta['key'], array('_tb_mega_menu', '_tb_mega_menu_hide_headers', '_tb_bold', '_tb_deactivate_link', '_tb_placeholder') ) ) {
+
 									update_post_meta( $item->ID, $meta['key'], $meta['value'] );
+
 								}
 							}
 						}
@@ -404,10 +410,10 @@ class Theme_Blvd_Import {
 				// site's address. -- Note this will only work
 				// if the user hasn't created another menu with
 				// a home button first.
-				$home = themeblvd_post_id_by_name( 'home', 'nav_menu_item' );
+				if ( $home = themeblvd_post_id_by_name( 'home', 'nav_menu_item' ) ) {
 
-				if ( $home ) {
-					update_post_meta( $home, '_menu_item_url', esc_url( home_url('/') ) );
+					update_post_meta( $home, '_menu_item_url', esc_url( home_url( '/' ) ) );
+
 				}
 
 				break;

@@ -20,8 +20,9 @@ When using a Theme Blvd theme, this plugin adds some helpful import and export f
 
 This plugin currently works with the following themes only.
 
-* [Jump Start 2.0.2+](http://themeblvd.com/links/buy-jumpstart)
-* [Denali 1.0.0+](http://themeblvd.com/links/buy-denali)
+* [Jump Start 2+](http://themeblvd.com/links/buy-jumpstart)
+* [Denali](http://themeblvd.com/links/buy-denali)
+* [Gnar](http://themeblvd.com/links/buy-gnar)
 
 == Installation ==
 
@@ -31,6 +32,8 @@ This plugin currently works with the following themes only.
 == Changelog ==
 
 = 1.0.3 - XX/XX/XX =
+
+* Fixed: Mega Menu and other meta data not importing properly with menu items.
 
 = 1.0.2 - 05/05/2016 =
 
