@@ -2,7 +2,7 @@
 Author URI: http://www.themeblvd.com
 Contributors: themeblvd
 Tags: import, export, demo, data
-Stable Tag: 1.0.2
+Stable Tag: 1.0.3
 
 A free plugin that integrates some helpful import/export functionality into Theme Blvd themes.
 
@@ -30,14 +30,16 @@ This plugin currently works with the following themes only.
 
 == Changelog ==
 
-= 1.0.2 - 05/05/16 =
+= 1.0.3 - XX/XX/XX =
+
+= 1.0.2 - 05/05/2016 =
 
 * Fixed: Demos not importing correctly numbered 10+ or with non-numerical strings.
 
-= 1.0.1 - 05/03/16 =
+= 1.0.1 - 05/03/2016 =
 
 * Fixed: PHP warning when importing a theme demo that happens to not have all menu locations being used.
 
-= 1.0.0 - 09/16/15 =
+= 1.0.0 - 09/16/2015 =
 
 * This is the first release.
