@@ -31,7 +31,7 @@ This plugin currently works with the following themes only.
 
 == Changelog ==
 
-= 1.0.3 - XX/XX/XX =
+= 1.0.3 - 01/09/2017 =
 
 * Fixed: Mega Menu and other meta data not importing properly with menu items.
 
