@@ -133,7 +133,14 @@ class Theme_Blvd_Import {
 
 			$parent = get_template_directory();
 			$active = get_stylesheet_directory();
-			$dir = apply_filters('themeblvd_import_dir', '/includes/demos/demo-'.$this->num.'/', $this->num);
+
+			$dir = '/inc/demos/demo-' . $this->num . '/';
+
+			if ( version_compare( TB_FRAMEWORK_VERSION, '2.7.0', '<' ) ) {
+				$dir = '/includes/demos/demo-' . $this->num . '/';
+			}
+
+			$dir = apply_filters( 'themeblvd_import_dir', $dir, $this->num );
 
 			foreach ( $this->files as $key => $value ) {
 

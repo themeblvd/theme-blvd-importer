@@ -33,6 +33,8 @@ This plugin currently works with the following themes only.
 
 = 1.0.4 - 01/16/2018 =
 
+* Fixed: If your theme has framework 2.7+, this update fixes the directory path to the theme sample data imported.
+
 = 1.0.3 - 01/09/2017 =
 
 * Fixed: Mega Menu and other meta data not importing properly with menu items.
