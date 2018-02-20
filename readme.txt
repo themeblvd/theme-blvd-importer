@@ -3,6 +3,7 @@ Author URI: http://www.themeblvd.com
 Contributors: themeblvd
 Tags: import, export, demo, data
 Stable Tag: 1.0.4
+Tested up to: 4.9
 
 A free plugin that integrates some helpful import/export functionality into Theme Blvd themes.
 
